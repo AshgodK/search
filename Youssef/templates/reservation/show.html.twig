@@ -1,0 +1,43 @@
+{% extends 'baseF.html.twig' %}
+
+{% block body %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-hoS4eBvZsAJMMeVsYswFkoRFUJxpg3/q5qJXp6U4Y4LpPC5lQsBaZZFzZ02I5Ji3OrsdzP5EO8bcpBfVff2Ug==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<div class="slide-inner" style="background-image:url(../../front/images/slide-01.jpg)">
+
+
+		<div class="container mt-5 text-light">
+			<h1 class="mb-4  text-light">reservations Details</h1>
+
+			<div class="row">
+				<div class="col-md-8">
+					<table class="table">
+						<tbody>
+							<tr>
+								<th class="text-light">Id</th>
+								<td class="text-light">{{ reservation.id }}</td>
+							</tr>
+							<tr>
+								<th class="text-light">Commentaire</th>
+								<td class="text-light">{{ reservation.commantaire }}</td>
+							</tr>
+							<tr>
+								<th class="text-light">Statut</th>
+								<td class="text-light">{{ reservation.statut }}</td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+
+				<div class="col-md-4">
+					<div class="text-center">
+						<a href="{{ path('app_reservation_new') }}" class="btn btn-success">Create new</a>
+						<a href="{{ path('app_reservation_index') }}" class="btn btn-primary mb-3">Back to List</a>
+						<a href="/reservation" class="btn btn-primary mb-3">Apply</a>
+						{{ include('reservation/_delete_form.html.twig') }}
+					</div>
+
+				</div>
+			</div>
+		</div>
+	{% endblock %}

@@ -1,0 +1,47 @@
+{{ form_start(form) }}
+    <div class="form-group">
+        <label style="color:white;">{{ form_label(form.nom, 'nom') }}</label>
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+         <label style="color:white;">{{ form_label(form.prenom, 'Prenom') }}</label>
+        {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+    </div>
+     <div class="form-group">
+         <label style="color:white;">{{ form_label(form.email, 'email') }}</label>
+        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+    </div>
+     <div class="form-group">
+        <label style="color:white;"> {{ form_label(form.ImagePath, 'Image') }}</label>
+        {{ form_widget(form.ImagePath, {'attr': {'class': 'form-control'}}) }}
+    </div>
+     <div class="form-group">
+         <label style="color:white;">{{ form_label(form.date_n, 'Date') }}</label>
+        {{ form_widget(form.date_n, {'attr': {'class': 'form-control'}}) }}
+    </div>
+     <div class="form-group">
+         <label style="color:white;">{{ form_label(form.password, 'Password') }}</label>
+        {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+         <label style="color:white;">{{ form_label(form.confirm_password, 'Confirm Password') }}</label>
+        {{ form_widget(form.confirm_password, {'attr': {'class': 'form-control'}}) }}
+    </div>
+     <div class="form-group">
+         <label style="color:white;">{{ form_label(form.adresse, 'Adresse') }}</label>
+        {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+    </div>
+     <div class="form-group">
+        <label style="color:white;"> {{ form_label(form.num_tel, 'Tel') }}</label>
+        {{ form_widget(form.num_tel, {'attr': {'class': 'form-control'}}) }}
+    </div>
+     <div class="form-group">
+         <label style="color:white;">{{ form_label(form.sexe, 'Sexe') }}</label>
+        {{ form_widget(form.sexe, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+

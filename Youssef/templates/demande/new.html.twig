@@ -1,0 +1,54 @@
+    {% extends 'basedem.html.twig' %}
+{% block body %}
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url("/front/images/slide-01.jpg");
+            background-size: cover;
+        }
+
+        .content-wrapper {
+            flex: 1; /* Ensure content takes remaining space */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px; /* Optional: adjust the maximum width of the form */
+            width: 100%;
+        }
+                        .btn {
+                    display: inline-block;
+                    padding: 10px 20px;
+                    background-color: #007bff; /* Button background color */
+                    color: #fff; /* Button text color */
+                    text-decoration: none;
+                    border-radius: 5px;
+                    margin-right: 10px; /* Adjust spacing between buttons */
+                }
+
+                .btn:hover {
+                    background-color: #0056b3; /* Button background color on hover */
+                }
+    </style>
+
+        
+
+    <div class="content-wrapper">
+        <div class="form-container">
+            <h1 style="margin-top: 20px">Create new Demande</h1>
+            {{ include('demande/_form.html.twig') }}
+        
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'baseF.html.twig' %}
+
+{% block body %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-hoS4eBvZsAJMMeVsYswFkoRFUJxpg3/q5qJXp6U4Y4LpPC5lQsBaZZFzZ02I5Ji3OrsdzP5EO8bcpBfVff2Ug==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<div class="slide-inner" style="background-image:url(../../front/images/slide-01.jpg)">
+
+
+		<div class="container mt-5 text-light">
+			<h1 class="mb-4  text-light">Cours Details</h1>
+
+			<div class="row">
+				<div class="col-md-8">
+					<table class="table">
+						<tbody>
+							<tr>
+								<th class="text-light">Id</th>
+								<td class="text-light">{{ cour.id }}</td>
+							</tr>
+							<tr>
+								<th class="text-light">Titre</th>
+								<td class="text-light">{{ cour.titre }}</td>
+							</tr>
+							<tr>
+								<th class="text-light">Description</th>
+								<td class="text-light">{{ cour.description }}</td>
+							</tr>
+							<tr>
+								<th class="text-light">Duree</th>
+								<td class="text-light">{{ cour.duree }}</td>
+							</tr>
+							<tr>
+								<th class="text-light">Categorie</th>
+								<td class="text-light">{{ cour.categorie }}</td>
+							</tr>
+							<tr>
+								<th class="text-light">Prix</th>
+								<td class="text-light">{{ cour.prix }}</td>
+							</tr>
+							<tr>
+								<th class="text-light">Nbplace</th>
+								<td class="text-light">{{ cour.nbplace }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="col-md-4">
+					<div class="text-center">
+						<a href="{{ path('app_cours_new') }}" class="btn btn-success">Create new</a>
+						<a href="{{ path('app_cours_index') }}" class="btn btn-primary mb-3">Back to List</a>
+						<a href="/reservation" class="btn btn-primary mb-3">Apply</a>
+						{{ include('cours/_delete_form.html.twig') }}
+					</div>
+
+				</div>
+			</div>
+		</div>
+	{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'baseF.html.twig' %}
+
+{% block body %}
+	<h1>Cours index</h1>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-hoS4eBvZsAJMMeVsYswFkoRFUJxpg3/q5qJXp6U4Y4LpPC5lQsBaZZFzZ02I5Ji3OrsdzP5EO8bcpBfVff2Ug==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<div class="slide-inner" style="background-image:url(../../front/images/slide-01.jpg)">
+
+		<style>
+			body {
+				display: flex;
+				min-height: 100vh;
+				align-items: center;
+				justify-content: center;
+				margin: 0;
+			}
+
+			.courses-container {
+				display: flex; /* Display containers horizontally */
+				flex-wrap: wrap; /* Allow containers to wrap to the next line if the space is not enough */
+				justify-content: space-around; /* Space around the containers */
+			}
+
+			.course-container {
+				border: 11px solid #ccc;
+				padding: 70px;
+				margin: 120px;
+				text-align: center;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				border-radius: 8px;
+				background-color: #fff;
+				transition: transform 0.3s ease-in-out;
+				flex: 0 0 30%; /* Adjust the width of each container */
+			}
+
+			.symfony-logo {
+				font-size: 40px;
+				color: #ff3d00;
+				margin-bottom: 10px;
+			}
+
+			.course-container:hover {
+				transform: scale(1.05);
+			}
+
+			.course-icon {
+				font-size: 24px;
+				color: #3498db;
+			}
+
+			.course-link {
+				text-decoration: none; /* Remove default link underline */
+				color: inherit; /* Inherit the color from the parent container */
+				display: block; /* Make the entire container clickable */
+			}
+
+			footer {
+				background-color: #f2f2f2;
+				padding: 20px 0;
+				text-align: center;
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+			}
+		</style>
+
+		<div class="courses-container">
+			{% for cour in cours %}
+				<a href="{{ path('app_cours_show', {'id': cour.id}) }}" class="course-link">
+					<div class="course-container">
+						<i class="fas fa-symfony symfony-logo"></i>
+						<!-- Symfony logo -->
+
+						<i class="fas fa-book course-icon"></i>
+						<h2>{{ cour.titre }}</h2>
+
+						<strong>Categorie:</strong>
+						{{ cour.categorie }}
+					</div>
+				</a>
+			{% else %}
+				<p>No records found</p>
+			{% endfor %}
+		</div>
+
+	</div>
+	<a href="{{ path('app_cours_new') }}" class="btn btn-success">Create new</a>
+
+{% endblock %}

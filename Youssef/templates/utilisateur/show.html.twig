@@ -1,0 +1,183 @@
+{% extends 'baseB.html.twig' %}
+
+
+    
+
+
+{% block content %}
+<style>
+     @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+body,
+html{
+  margin:0;
+  padding:0;
+}
+
+
+
+#header {
+  width: 50vw;
+  max-width: 400px;
+  min-width: 300px;
+  height: 200px;
+  background: url('{{ asset('testimg.jpg') }}');
+  background-size: cover;
+  background-position: center center;
+  transition: all .08s linear;
+}
+
+
+#profile{
+  width:50vw;
+  max-width:500px;
+  min-width:400px;
+  height:230px;
+  background: white;
+  position:relative;
+  box-sizing:border-box;
+  padding-top:40px;
+  padding-left:25px;
+  font-family: 'Open Sans', sans-serif;
+  .image{
+    position:absolute;
+    border:3px solid white;
+    top:-55px;
+    left: 20px;
+    height:80px;
+    width:80px;
+    border-radius:10px;
+    img{
+      width:inherit;
+      height:inherit;
+      border-radius:8px;
+    }
+  }
+  
+  .name{
+    font-size:1.3rem;
+    font-weight:500;
+    color:#444;
+   
+  }
+  .nickname{
+    color:#888;
+    font-size:0.9rem;
+    padding-bottom:7px;
+  }
+  .location{
+    color:#555;
+    font-size:0.9rem;
+    padding-left:0px;
+    position:relative;
+    left:-5px;
+    .material-icons{
+      position:relative;
+      top:3px;
+      font-size:1rem;
+    }
+  }
+}
+
+.shadow{
+  box-shadow: 0px 0px 10px 1px rgba(black,0.5);
+}
+
+.overflow{
+  overflow:hidden;
+}
+
+.following,
+.followers{
+  font-family: 'Open Sans', sans-serif;
+  font-size:0.9rem;
+  color:#bbb;
+  font-weight:300;
+}
+.followers{
+  float:right;
+  padding-right:30px;
+}
+.bottom{
+  margin-top:10px;
+}
+
+.count{
+  color:black;
+  font-family: 'Open Sans', sans-serif;
+  font-size:0.9rem;
+  font-weight:700;
+}
+.action-buttons a.btn {
+    background-color: #343a40; /* Dark background color */
+    color: #fff; /* Light text color */
+    border-color: #343a40; /* Dark border color */
+}
+.action-buttons a.btn-edit {
+    background-color: #ADD8E6; /* Dark background color */
+    color: #fff; /* Light text color */
+    border-color: #343a40; /* Dark border color */
+}
+
+.action-buttons a.btn:hover {
+    background-color: #495057; /* Darker background color on hover */
+    color: #fff; /* Light text color on hover */
+}
+.action-buttons a.btn-edit:hover {
+    background-color: #495057; /* Darker background color on hover */
+    color: #fff; /* Light text color on hover */
+}
+
+    </style>
+    <h1>Utilisateur</h1>
+    <script>
+
+    </script>
+    <center>
+<div class="shadow overflow">
+  <div id="header"></div>
+  <div id="profile">
+    <div class="image">
+    <img src="{{asset(utilisateur.ImagePath)}}" alt="" />
+    </div>
+    <div class="name">
+      Nom: {{utilisateur.nom}}
+    </div>
+    <div class="nickname">
+      Prenom: {{utilisateur.prenom}}
+    </div>
+     <div class="nickname">
+      {{utilisateur.sexe}}
+    </div>
+    <div class="nickname">
+      Email: {{utilisateur.email}}
+    </div>
+    <div class="location">
+    Adresse: {{utilisateur.adresse}}
+    </div>
+    <div class="bottom">
+    <span class="following">
+      <span class="count" style="margin-left:100px;">{{utilisateur.numtel}}</span>
+      
+      </span>
+      <span class="followers">
+        <span class="count"></span>
+        {{utilisateur.role}}
+      </span>
+    </div>
+  </div>
+</div>
+   
+
+        <div class="action-buttons">
+            <a class="btn" href="{{ path('app_utilisateur_index') }}">Retour à la liste</a>
+            
+            <a class="btn" href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}">Modifier</a>
+        </div>
+   
+
+    {{ include('utilisateur/_delete_form.html.twig') }}
+    </center>
+{% endblock %}

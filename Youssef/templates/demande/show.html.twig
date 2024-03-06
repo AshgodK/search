@@ -1,0 +1,85 @@
+    {% extends 'basedem.html.twig' %}
+{% block body %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-hoS4eBvZsAJMMeVsYswFkoRFUJxpg3/q5qJXp6U4Y4LpPC5lQsBaZZFzZ02I5Ji3OrsdzP5EO8bcpBfVff2Ug==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<style>
+    body {
+        background-image: url(/front/images/slide-01.jpg);
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        overflow-y: auto;
+        margin: 0;
+        padding: 0;
+        background-attachment: fixed; /* Ensure the background image covers the entire height even when scrolling */
+    }
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.5); /* Adjust the alpha value (0.5 in this case) to set the transparency */
+        z-index: 9999; /* Ensure the navbar stays on top */
+        padding: 20px 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: add shadow for a raised effect */
+    }
+
+    .container {
+        padding: 20px;
+        margin-top: 80px; /* Add margin-top to avoid header covering the demande details */
+        max-width: 800px;
+    }
+    .demande-card {
+        background-color: rgba(255, 255, 255, 0.9);
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .demande-actions {
+        list-style-type: none;
+        padding: 0;
+    }
+    .demande-actions li {
+        display: inline;
+        margin-right: 10px;
+    }
+</style>
+
+<div class="container">
+    {% if pagination.getTotalItemCount() > 0 %}
+        {% for demande in pagination %}
+            <div class="demande-card">
+                <h3>Demande Details for Offer: {{ demande.offre.nom }}</h3>
+                <hr>
+                <div>
+                    <strong>Description:</strong> {{ demande.description }}<br>
+                    <strong>Email:</strong> <a href="mailto:{{ demande.user.email }}">{{ demande.user.email }}</a><br>
+                </div>
+                <hr>
+                <div>
+                    <strong>Actions:</strong>
+                    <ul class="demande-actions">
+                        <li><a href="{{ path('app_demande_delete', {'userId': userId, 'id': demande.id}) }}" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a></li>
+                        <li><a href="{{ path('app_demande_edit', {'userId': userId, 'id': demande.id}) }}" onclick="return confirm('Are you sure you want to edit this item?')">Edit</a></li>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="demande-card">
+            <strong>No records found</strong>
+        </div>
+    {% endif %}
+
+    <!-- Back to Offers List and Create New Demande buttons -->
+    <a href="{{ path('user_offers', {'userId': userId}) }}" class="btn btn-primary" style='margin-bottom: 10px;'>Back to Offers List</a>
+    <a href="{{ path('app_demande_new', {'userId': userId, 'id': id}) }}" class="btn btn-primary" style='margin-bottom: 10px;'>Create New Demande</a>
+
+    <!-- Pagination links -->
+    <div class="pagination">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+</div>
+
+{% endblock %}

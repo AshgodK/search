@@ -1,0 +1,51 @@
+{# cours/_form.html.twig #}
+{% extends 'baseF.html.twig' %}
+{% block body %}
+	<form action="{{ path('app_cours_new') }}" method="post" id="newCoursForm" novalidate>
+		{{ form_start(form) }}
+
+		<div>
+			<label for="{{ form.titre.vars.id }}">Titre:</label>
+			{{ form_widget(form.titre, {'attr': {'required': 'required', 'pattern': '[A-Za-z]+'}}) }}
+			<small>Only characters are allowed</small>
+		</div>
+
+		<div>
+			<label for="{{ form.description.vars.id }}">Description:</label>
+			{{ form_widget(form.description, {'attr': {'required': 'required', 'pattern': '[A-Za-z]+'}}) }}
+			<small>Only characters are allowed</small>
+		</div>
+		<div>
+			<label for="{{ form.categorie.vars.id }}">categorie:</label>
+			{{ form_widget(form.categorie, {'attr': {'required': 'required', 'pattern': '[A-Za-z]+'}}) }}
+			<small>Only characters are allowed</small>
+		</div>
+		<div>
+			<label for="{{ form.prix.vars.id }}">Prix:</label>
+			{{ form_widget(form.prix, {'attr': {'required': 'required', 'type': 'text', 'pattern': '^\d+(\.\d{1,2})?$'}}) }}
+			<small>Enter a valid price (e.g., 10 or 10.50)</small>
+		</div>
+
+		<div>
+			<label for="{{ form.nbplace.vars.id }}">Nbplace:</label>
+			{{ form_widget(form.nbplace, {'attr': {'required': 'required', 'type': 'text', 'pattern': '^\d+$'}}) }}
+			<small>Enter a valid number of places (e.g., 5)</small>
+		</div>
+
+		<!-- Add other form fields as needed -->
+
+
+		<script>
+			// Add an event listener for form submission
+document.getElementById('newCoursForm').addEventListener('submit', function (event) { // Check form validity before submission
+if (!this.checkValidity()) {
+event.preventDefault(); // Prevent form submission if not valid
+alert('Please fill in all required fields with valid input.');
+}
+});
+		</script>
+
+		<button type="submit" class="btn">{{ button_label|default('Save') }}</button>
+		{{ form_end(form) }}
+	</form>
+{% endblock %}

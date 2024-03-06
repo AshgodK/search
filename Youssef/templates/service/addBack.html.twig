@@ -1,0 +1,12 @@
+{% extends 'baseDou.html.twig' %}
+
+{% block title %}New Service{% endblock %}
+
+{% block mainnn %}
+    <h1>Create new Service</h1>
+
+    {{ include('service/_formback.html.twig') }}
+ 
+
+    <a href="{{ path('app_service_indexback') }}">back to list</a>
+{% endblock %}

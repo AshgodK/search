@@ -1,0 +1,40 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+#index:
+#    path: /
+#    controller: App\Controller\BaseFController::index
+
+front_ico:
+    path: /favicon.ico
+    controller: App\Controller\FrontController::index
+front_bg:
+    path: /front/images/header-bg.png
+    controller: App\Controller\FrontController::index
+front_bootstrap_map:
+    path: /front/vendor/bootstrap/css/bootstrap.min.css.map
+    controller: App\Controller\FrontController::index
+front_jquery:
+    path: /front/js/jquery.min.map
+    controller: App\Controller\FrontController::index
+
+front_js_map:
+    path: /front/js/swiper.min.js.map
+    controller: App\Controller\FrontController::index
+    
+back_route:
+    path: /back
+    controller: App\Controller\BackController::index
+baseF_route:
+    path: /baseF
+    controller: App\Controller\BaseFController::index  
+front_route:
+    path: /front
+    controller: App\Controller\FrontController::index
+baseB_route:
+    path: /baseB
+    controller: App\Controller\BaseBController::index     
+app_search:
+    path: /offre/search
+    controller: App\Controller\OffreController::search
+    methods: ['GET', 'POST']    

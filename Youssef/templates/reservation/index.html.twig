@@ -1,0 +1,86 @@
+{% extends 'baseF.html.twig' %}
+
+{% block body %}
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-hoS4eBvZsAJMMeVsYswFkoRFUJxpg3/q5qJXp6U4Y4LpPC5lQsBaZZFzZ02I5Ji3OrsdzP5EO8bcpBfVff2Ug==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<div class="slide-inner" style="background-image:url(../../front/images/slide-01.jpg)">
+
+		<style>
+			body {
+				display: flex;
+				min-height: 100vh;
+				align-items: center;
+				justify-content: center;
+				margin: 50px;
+			}
+
+			table {
+				width: 80%;
+				margin-top: 230px;
+			}
+
+			th,
+			td {
+				padding: 15px;
+				text-align: left;
+			}
+
+			th {
+				background-color: #3498db;
+				color: white;
+			}
+
+			td {
+				background-color: #ecf0f1;
+			}
+
+			footer {
+				background-color: #f2f2f2;
+				padding: 20px 0;
+				text-align: center;
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+			}
+			h1 {
+				margin-top: 230px;
+				text-align: center;
+
+			}
+		</style>
+
+		<h1 class="text-light">Reservation</h1>
+
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Commentaire</th>
+					<th>Statut</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for reservation in reservations %}
+					<tr>
+						<td class="text-light">{{ reservation.id }}</td>
+						<td class="text-light">{{ reservation.commantaire }}</td>
+						<td class="text-light">{{ reservation.statut }}</td>
+						<td>
+							<a href="{{ path('app_reservation_show', {'id': reservation.id}) }}" class="btn btn-info btn-sm">Show</a>
+							<a href="{{ path('app_reservation_edit', {'id': reservation.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">No records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_reservation_new') }}" class="btn btn-success">Create new</a>
+		<a href="/cours" class="btn btn-primary mb-3">Return to Online courses</a>
+
+	</div>
+{% endblock %}

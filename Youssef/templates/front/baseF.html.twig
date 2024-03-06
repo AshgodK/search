@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="{{asset('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap')}}" rel="stylesheet">
+
+    <title>Mexant - Financial HTML5 Template</title>
+
+    <!-- Bootstrap core CSS -->
+    {% block css %}
+    <link href="{{asset('front/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{{asset('front/css/fontawesome.css')}}">
+    <link rel="stylesheet" href="{{asset('front/css/templatemo-574-mexant.css')}}">
+    <link rel="stylesheet" href="{{asset('front/css/owl.css')}}">
+    <link rel="stylesheet" href="{{asset('front/css/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('https://unpkg.com/swiper@7/swiper-bundle.min.css')}}">
+
+    {% endblock %}
+
+
+
+
+ 
+  <!-- ***** Header Area Start ***** -->
+    {% block header %}
+  <header class="header-area header-sticky">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <!-- ***** Logo Start ***** -->
+                      <a href="{{asset('index.html')}}" class="logo">
+                          <img src="{{asset('front/images/logo.png')}}" alt="">
+                      </a>
+                      <!-- ***** Logo End ***** -->
+                      <!-- ***** Menu Start ***** -->
+                      <ul class="nav">
+                          <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                          <li class="scroll-to-section"><a href="#services">Services</a></li>
+                          <li class="scroll-to-section"><a href="{{app_commande_indexcart}}">cart</a></li>
+                          <li class="scroll-to-section"><a href="{{app_commande_indexcart}}">About</a></li>app_commande_indexcart
+                          <li class="has-sub">
+                              <a href="javascript:void(0)">Pages</a>
+                              <ul class="sub-menu">
+                                  <li><a href="about-us.html">About Us</a></li>
+                                  <li><a href="our-services.html">Our Services</a></li>
+                                  <li><a href="contact-us.html">Contact Us</a></li>
+                              </ul>
+                          </li>
+                          <li class="scroll-to-section"><a href="#testimonials">Testimonials</a></li>
+                          <li><a href="{{asset('contact-us.html')}}">Contact Support</a></li> 
+                      </ul>        
+                      <a class='menu-trigger'>
+                          <span>Menu</span>
+                      </a>
+                      <!-- ***** Menu End ***** -->
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+    {% endblock  %}
+
+
+  <!-- ***** Main Banner Area Start ***** -->
+      {% block Banner %}
+
+  <div class="swiper-container" id="top">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="slide-inner" ">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="slide-inner" ">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="header-text">
+                  <h2><em>Digital</em> Currency for you <br>&amp; Best <em>Crypto</em> Tips</h2>
+                  <div class="div-dec"></div>
+                  <p>You will see a bunch of free CSS templates when you search on Google. TemplateMo website is probably the best one because it is 100% free. It does not ask you anything in return. You have a total freedom to use any template for any purpose.</p>
+                  <div class="buttons">
+                    <div class="green-button">
+                      <a href="#">Discover More</a>
+                    </div>
+                    <div class="orange-button">
+                      <a href="#">Contact Us</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="slide-inner" style="background-image:url(front/images/slide-03.jpg)">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="header-text">
+                  <h2>Best One in Town<br>&amp; Crypto <em>Services</em></h2>
+                  <div class="div-dec"></div>
+                  <p>When you browse through different tags on TemplateMo website, you can see a variety of CSS templates which are responsive website designs for different individual needs. Please tell your friends about our website. Thank you.</p>
+                  <div class="buttons">
+                    <div class="green-button">
+                      <a href="#">Discover More</a>
+                    </div>
+                    <div class="orange-button">
+                      <a href="#">Contact Us</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-next swiper-button-white"></div>
+    <div class="swiper-button-prev swiper-button-white"></div>
+  </div>
+    {% endblock  %}
+
+  <!-- ***** Main Banner Area End ***** -->
+    
+
+  
+
+  
+
+  <section class="partners">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-sm-4 col-6">
+          <div class="item">
+            <img src="{{asset('front/images/client-01.png')}}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-2 col-sm-4 col-6">
+          <div class="item">
+            <img src="{{asset('front/images/client-01.png')}}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-2 col-sm-4 col-6">
+          <div class="item">
+            <img src="{{asset('front/images/client-01.png')}}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-2 col-sm-4 col-6">
+          <div class="item">
+            <img src="{{asset('front/images/client-01.png')}}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-2 col-sm-4 col-6">
+          <div class="item">
+            <img src="{{asset('front/images/client-01.png')}}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-2 col-sm-4 col-6">
+          <div class="item">
+            <img src="{{asset('front/images/client-01.png')}}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2022 Mexant Co., Ltd. All Rights Reserved. 
+          
+          <br>Designed by <a title="CSS Templates" rel="sponsored" href="{{asset('https://templatemo.com')}}" target="_blank">TemplateMo</a> Distributed By <a title="CSS Templates" rel="sponsored" href="https://themewagons.com" target="_blank">ThemeWagon</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  </body>
+
+
+
+
+
+
+
+
+      <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  {% block javascripts %}
+    <script src="{{asset('front/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('https://code.jquery.com/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{asset('front/js/isotope.min.j')}}s"></script>
+    <script src="{{asset('front/js/owl-carousel.js')}}"></script>
+    <script src="{{asset('front/js/tabs.js')}}"></script>
+    <script src="{{asset('front/js/swiper.js')}}"></script>
+    <script src="{{asset('front/js/custom.js')}}"></script>
+    <script>
+        var interleaveOffset = 0.5;
+
+      var swiperOptions = {
+        loop: true,
+        speed: 1000,
+        grabCursor: true,
+        watchSlidesProgress: true,
+        mousewheelControl: true,
+        keyboardControl: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        on: {
+          progress: function() {
+            var swiper = this;
+            for (var i = 0; i < swiper.slides.length; i++) {
+              var slideProgress = swiper.slides[i].progress;
+              var innerOffset = swiper.width * interleaveOffset;
+              var innerTranslate = slideProgress * innerOffset;
+              swiper.slides[i].querySelector(".slide-inner").style.transform =
+                "translate3d(" + innerTranslate + "px, 0, 0)";
+            }      
+          },
+          touchStart: function() {
+            var swiper = this;
+            for (var i = 0; i < swiper.slides.length; i++) {
+              swiper.slides[i].style.transition = "";
+            }
+          },
+          setTransition: function(speed) {
+            var swiper = this;
+            for (var i = 0; i < swiper.slides.length; i++) {
+              swiper.slides[i].style.transition = speed + "ms";
+              swiper.slides[i].querySelector(".slide-inner").style.transition =
+                speed + "ms";
+            }
+          }
+        }
+      };
+
+      var swiper = new Swiper(".swiper-container", swiperOptions);
+    </script>
+  {% endblock %}
+<!--
+TemplateMo 574 Mexant
+
+https://templatemo.com/tm-574-mexant
+
+-->
+  </head>

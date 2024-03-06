@@ -1,0 +1,35 @@
+{# templates/offre/approved_trie.html.twig #}
+
+{% extends 'baseoff.html.twig' %}
+
+{% block title %}Offres approuvées{% endblock %}
+
+{% block body %}
+    <h1>Offres approuvées</h1>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Date d'échéance</th>
+                <th>Statut</th>
+                <th>Prix</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for offre in approvedOffres %}
+                <tr>
+                    <td>{{ offre.id }}</td>
+                    <td>{{ offre.nom }}</td>
+                    <td>{{ offre.description }}</td>
+                    <td>{{ offre.echances|date('Y-m-d') }}</td>
+                    <td>{{ offre.statut }}</td>
+                    <td>{{ offre.prix }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

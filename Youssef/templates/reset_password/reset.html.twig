@@ -1,0 +1,79 @@
+{% extends 'BaseRegister.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block body %}
+     <section id="team" class="team">
+        <div class="container">
+            <h1>Reset your password</h1>
+            <div>
+                <small>
+                    Enter your email address and we will send you a
+                    link to reset your password.
+                </small>
+            </div>
+            <br>
+             <div class="form-container">
+                {{ form_start(resetForm, {'attr': {'class': 'form-control'}}) }}
+                <br>
+                    {{ form_row(resetForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Enter your new password'}}) }}
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
+                {{ form_end(resetForm) }}
+             </div>
+        </div>
+    </section>
+
+    <style>
+     .team {
+            padding: 80px 0;
+        }
+
+        .team h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: #333;
+            text-transform: uppercase;
+        }
+
+        .team small {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #cc1616;
+            box-shadow: 0 0 0 3px rgba(204, 22, 22, 0.1);
+        }
+
+        .btn {
+            background-color: #cc1616;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #991111;
+        }
+ 
+    </style>
+{% endblock %}

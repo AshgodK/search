@@ -1,0 +1,29 @@
+    {% extends 'basedem.html.twig' %}
+
+    {% block body %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-hoS4eBvZsAJMMeVsYswFkoRFUJxpg3/q5qJXp6U4Y4LpPC5lQsBaZZFzZ02I5Ji3OrsdzP5EO8bcpBfVff2Ug==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <div class="slide-inner" style="background-image:url(/front/images/slide-01.jpg)">
+        <style>
+        .form-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999; /* Ensure it's above other elements */
+        background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color and transparency as needed */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+        }</style>
+
+        <!-- Content specific to each page -->
+        <div class="form-container">
+            <h1>Edit Demande :</h1>
+            <!-- Content of the body block goes here -->
+        {{ include('demande/_form.html.twig', {'button_label': 'Update'}) }}
+        
+        
+        </div>
+        </div>
+    {% endblock %}
+

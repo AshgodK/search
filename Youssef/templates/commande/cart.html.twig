@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Shopping Cart Checkout - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <style type="text/css">
+        /* Your CSS styles */
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <span class="pull-right">(<strong>5</strong>) items</span>
+                        <h5>Items in your cart</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="table-responsive">
+                            <table class="table shoping-cart-table">
+                                <tbody>
+                                    {% for commande in commandes %}
+                                    <tr>
+                                        <td width="90">
+                                            <div class="cart-product-imitation"></div>
+                                        </td>
+                                        <td class="desc">
+                                            <h3>
+                                                <a href="#" class="text-navy">Service: {{ commande.service }}</a>
+                                            </h3>
+                                            <p class="small">Status: {{ commande.statut }}</p>
+                                            <dl class="small m-b-none">
+                                                <dt>Date command:</dt>
+                                                <dd>{{ commande.date ? commande.date|date('Y-m-d') : '' }}</dd>
+                                            </dl>
+                                            <div class="m-t-sm">
+                                                <a href="#" class="text-muted"><i class="fa fa-gift"></i> Add gift package</a>
+                                                <a href="{{ path('app_commande_pdf', {'id': commande.id}) }}">PDF 🗎</a>
+                                                <a href="{{ path('app_delete_item', {'id': commande.id}) }}" class="text-muted" onclick="event.preventDefault(); document.getElementById('delete-form-{{commande.id}}').submit();"><i class="fa fa-trash"></i> Remove item</a>
+                                                <form id="delete-form-{{commande.id}}" action="{{ path('app_delete_item', {'id': commande.id}) }}" method="POST" style="display: none;">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ commande.id) }}">
+                                                </form>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            Prix: ${{ commande.prix }}
+                                            <s class="small text-muted"></s>
+                                        </td>
+                                        <td width="65">
+                                            <input type="text" class="form-control" placeholder="1">
+                                        </td>
+                                        <td>
+                                            <h4></h4>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <button class="btn btn-primary pull-right"><i class="fa fa fa-shopping-cart"></i> Checkout</button>
+                        <button class="btn btn-white" onclick="window.location='{{ path('app_service_index') }}'"><i class="fa fa-arrow-left"></i> Continue shopping</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <!-- Your cart summary, support, and other products sections -->
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    // Your JavaScript code
+</script>
+</body>
+</html>

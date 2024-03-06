@@ -1,0 +1,99 @@
+{# templates/offre/_form.html.twig #}
+
+{{ form_start(form, {'attr': {'class': 'row g-3 needs-validation', 'novalidate': 'novalidate'}}) }}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div style="margin-bottom: 5px; margin-top: 10px">
+            {{ form_label(form.nom, 'Nom :')}}
+            </div>   
+            {{ form_widget(form.nom, {'attr': {'class': 'form-control' ~ (form_errors(form.nom)|length ? ' is-invalid' : ''), 'placeholder': 'NOM DE PROJET'}}) }}
+            {% if form_errors(form.nom)|length %}
+                <div class="invalid-feedback">
+                    Nom doit etre composer seulement par des caracteres.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div style="margin-bottom: 5px; margin-top: 10px">
+            {{ form_label(form.description, 'Description :')}}
+            </div>
+            {{ form_widget(form.description, {'attr': {'class': 'form-control' ~ (form_errors(form.description)|length ? ' is-invalid' : ''), 'placeholder': 'DESCRIPTION DU PROJET'}}) }}
+            {% if form_errors(form.description)|length %}
+                <div class="invalid-feedback">
+                    {{ form_errors(form.description) }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div style="margin-top: 10px; margin-bottom: 5px">
+            {{ form_label(form.echances, 'Echeance :')}}
+            </div>
+            {{ form_widget(form.echances, {'attr': {'class': 'form-control', 'placeholder': 'ENTER ECHEANCE'}}) }}
+            {% if form_errors(form.echances)|length %}
+                <div class="invalid-feedback">
+                   {{ form_errors(form.echances) }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <div style="margin-top: 10px; margin-bottom: 5px">
+            {{ form_label(form.statut, 'Statut :')}}
+            </div>
+            {{ form_widget(form.statut, {'attr': {'class': 'form-control' ~ (form_errors(form.statut)|length ? ' is-invalid' : '')}}) }}
+            {% if form_errors(form.statut)|length %}
+                <div class="invalid-feedback">
+                    {{ form_errors(form.statut) }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div style="margin-top: 10px; margin-bottom: 5px">
+            {{ form_label(form.prix, 'Prix :')}}
+            </div>
+                {{ form_widget(form.prix, {'attr': {'class': 'form-control custom-dropdown' ~ (form_errors(form.prix)|length ? ' is-invalid' : ''), 'placeholder': 'PRIX ESTIMEE'}}) }}
+                {% if form_errors(form.prix)|length %}
+                    <div class="invalid-feedback">
+                        Prix seulement avec les chiffres.
+                    </div>
+                {% endif %}
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="user" style="margin-top: 10px; margin-bottom: 5px">Utilisateur :</label>
+            <input type="text" id="user" class="form-control" value="{{ username }}" readonly>
+        </div>
+    </div>
+
+
+</div>
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">{{ button_label|default('Save') }}</button>
+        
+    </div>
+    <div class="col-12">
+       <a href="{{ path('user_offers', {'userId': userId}) }}">back to list</a>
+    </div>
+</div>
+
+
+
+{{ form_end(form) }}

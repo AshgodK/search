@@ -1,0 +1,10 @@
+{% extends 'baseF.html.twig' %}
+{% block body %}
+	<div style="margin-top: 150px;">
+		<h1>Create new Reservation</h1>
+
+		{{ include('reservation/_form.html.twig') }}
+
+		<a href="{{ path('app_reservation_index') }}">back to list</a>
+	</div>
+{% endblock %}

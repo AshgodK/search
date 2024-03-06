@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Facture Commande #{{ commande.id }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Facture Commande #{{ commande.id }}</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Service</th>
+        <th>Date</th>
+        <th>Statut</th>
+        <th>Prix</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ commande.service }}</td>
+        <td>{{ commande.date ? commande.date|date('Y-m-d') : '' }}</td>
+        <td>{{ commande.statut }}</td>
+        <td>{{ commande.prix }}</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

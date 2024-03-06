@@ -1,0 +1,83 @@
+    {% extends 'basedem.html.twig' %}
+{% block body %}
+    <h1>Demande index</h1>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-hoS4eBvZsAJMMeVsYswFkoRFUJxpg3/q5qJXp6U4Y4LpPC5lQsBaZZFzZ02I5Ji3OrsdzP5EO8bcpBfVff2Ug==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <div class="slide-inner" style="background-image:url(../../front/images/slide-01.jpg)">
+        <div class="container">
+            <style>
+                body {
+                    display: flex;
+                    min-height: 100vh;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0;
+                }
+
+                .table-container {
+                    margin-top: 20px; /* Adjust the margin as needed */
+                }
+
+                .table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                .table th,
+                .table td {
+                    border: 1px solid #ccc;
+                    padding: 8px;
+                    text-align: left;
+                }
+
+                .table th {
+                    background-color: #f2f2f2; /* Header background color */
+                }
+
+                .table tr:nth-child(even) {
+                    background-color: #f2f2f2; /* Alternate row background color */
+                }
+
+                .table tr:hover {
+                    background-color: #ddd; /* Hover row background color */
+                }
+                .table-container {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: rgba(255, 255, 255, 0.5); /* Adjust the background color and opacity as needed */
+                    padding: 20px;
+                    border-radius: 10px;
+                    max-width: 80%; /* Adjust the maximum width as needed */
+                }
+            </style>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Description</th>
+                        <th>pdf</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for demande in demandes %}
+                        <tr>
+                            <td>{{ demande.id }}</td>
+                            <td>{{ demande.description }}</td>
+                            <td>
+                                <a href="{{ path('app_demande_pdf', {'id': demande.id}) }}" class="btn btn-primary">PDF</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

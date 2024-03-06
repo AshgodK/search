@@ -1,0 +1,230 @@
+{% extends 'baseDoua.html.twig' %}
+
+{% block title %}Service index{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .card {
+            transition: transform 0.3s ease;
+            width: 15rem; /* Adjust the width of the card */
+            margin-bottom: 20px; /* Add margin between cards */
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        /* Custom button styles */
+        .btn-commander {
+            background-color: #ffc107;
+            border-color: #ffc107;
+            color: #212529;
+            transition: background-color 0.3s ease;
+        }
+        .btn-commander:hover {
+            background-color: #e0a800;
+            border-color: #e0a800;
+            color: #212529;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<div class="row mb-4">
+        <div class="col-md-6">
+            <form action="{{ path('app_service_index')}}" method="GET" class="form-inline">
+                <div class="col-md-6">
+            <input type="text" id="search" name='search' class="form-control" placeholder="Search...">
+            
+            </form>
+            
+        </div>
+                
+        </div>
+    </div>
+    <div class="row" id="search-results">
+        {% for service in services %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ asset('uploads/images/' ~ service.image) }}" alt="{{ service.nom }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ service.nom }}</h5>
+                        <p class="card-text">{{ service.description }}</p>
+                        <div class="btn-group" role="group" aria-label="Service Actions">
+                            <a href="{{ path('app_service_show', {'id': service.id}) }}" class="btn btn-primary">See Details</a>
+                            <a href="{{ path('app_commande_new') }}" class="btn btn-commander">Commander 🛒</a>
+                            <button class="btn like-btn" data-service-id="{{ service.id }}"><i class="fa fa-thumbs-up"></i> Like <span class="like-count">0</span></button>
+                            <button class="btn dislike-btn" data-service-id="{{ service.id }}"><i class="fa fa-thumbs-down"></i> Dislike <span class="dislike-count">0</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-md-12">
+                <p>No records found</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div id="pagination" class="d-flex justify-content-center mt-4">
+                {{ knp_pagination_render(services, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+            </div>
+            
+<a href="{{ path('app_service_new') }}" class="btn btn-success">Create New</a>
+        </div>
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+    function bindCardEvents() {
+       
+            const cards = document.querySelectorAll(".card");
+
+            cards.forEach(card => {
+                card.addEventListener("mouseover", function() {
+                    this.style.transform = "translateY(-5px)";
+                    this.style.boxShadow = "0 6px 12px rgba(0, 0, 0, 0.15)";
+                });
+
+                card.addEventListener("mouseout", function() {
+                    this.style.transform = "translateY(0)";
+                    this.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+                });
+
+                const likeButton = card.querySelector('.like-btn');
+                const dislikeButton = card.querySelector('.dislike-btn');
+                const likeCount = card.querySelector('.like-count');
+                const dislikeCount = card.querySelector('.dislike-count');
+
+                let likes = 0;
+                let dislikes = 0;
+                let liked = false;
+                let disliked = false;
+
+                likeButton.addEventListener('click', function() {
+                    if (!liked) {
+                        likes++;
+                        likeCount.textContent = likes;
+                        liked = true;
+                        if (disliked) {
+                            dislikes--;
+                            dislikeCount.textContent = dislikes;
+                            disliked = false;
+                        }
+                    } else {
+                        likes--;
+                        likeCount.textContent = likes;
+                        liked = false;
+                    }
+                });
+
+                dislikeButton.addEventListener('click', function() {
+                    if (!disliked) {
+                        dislikes++;
+                        dislikeCount.textContent = dislikes;
+                        disliked = true;
+                        if (liked) {
+                            likes--;
+                            likeCount.textContent = likes;
+                            liked = false;
+                        }
+                    } else {
+                        dislikes--;
+                        dislikeCount.textContent = dislikes;
+                        disliked = false;
+                    }
+                });
+            });
+        ;
+    }
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll(".card");
+
+            cards.forEach(card => {
+                card.addEventListener("mouseover", function() {
+                    this.style.transform = "translateY(-5px)";
+                    this.style.boxShadow = "0 6px 12px rgba(0, 0, 0, 0.15)";
+                });
+
+                card.addEventListener("mouseout", function() {
+                    this.style.transform = "translateY(0)";
+                    this.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+                });
+
+                const likeButton = card.querySelector('.like-btn');
+                const dislikeButton = card.querySelector('.dislike-btn');
+                const likeCount = card.querySelector('.like-count');
+                const dislikeCount = card.querySelector('.dislike-count');
+
+                let likes = 0;
+                let dislikes = 0;
+                let liked = false;
+                let disliked = false;
+
+                likeButton.addEventListener('click', function() {
+                    if (!liked) {
+                        likes++;
+                        likeCount.textContent = likes;
+                        liked = true;
+                        if (disliked) {
+                            dislikes--;
+                            dislikeCount.textContent = dislikes;
+                            disliked = false;
+                        }
+                    } else {
+                        likes--;
+                        likeCount.textContent = likes;
+                        liked = false;
+                    }
+                });
+
+                dislikeButton.addEventListener('click', function() {
+                    if (!disliked) {
+                        dislikes++;
+                        dislikeCount.textContent = dislikes;
+                        disliked = true;
+                        if (liked) {
+                            likes--;
+                            likeCount.textContent = likes;
+                            liked = false;
+                        }
+                    } else {
+                        dislikes--;
+                        dislikeCount.textContent = dislikes;
+                        disliked = false;
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        var delayTimer; // Variable to store the timer ID
+
+        function search() {
+            // Clear the previous timer
+            clearTimeout(delayTimer);
+            // Set a new timer to execute the search after a delay (e.g., 300 milliseconds)
+            delayTimer = setTimeout(function() {
+                var query = document.getElementById('search').value;
+                var url = '{{ path('app_service_index') }}?q=' + query;
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    success: function(response) {
+                        $('#search-results').html(response.content); // Update search results HTML
+                        bindCardEvents()
+                        $('#pagination').html(response.pagination); // Update pagination HTML
+                        
+                        
+                        
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }, 300); // Set the delay time here (300 milliseconds in this example)
+        }
+        document.getElementById('search').addEventListener('input', search);
+    </script>
+    <!-- Courses End -->
+    {% endblock %}

@@ -1,0 +1,30 @@
+{# reservation/_form.html.twig #}
+
+<form action="{{ path('app_reservation_new') }}" method="post" id="newreservationForm" novalidate>
+	{{ form_start(form) }}
+
+	<div>
+		<label for="{{ form.commantaire.vars.id }}">commantaire:</label>
+		{{ form_widget(form.commantaire, {'attr': {'required': 'required', 'pattern': '[A-Za-z]+'}}) }}
+		<small>Only characters are allowed</small>
+	</div>
+
+	<div>
+		<label for="{{ form.statut.vars.id }}">statut:</label>
+		{{ form_widget(form.statut, {'attr': {'required': 'required', 'pattern': '[A-Za-z]+'}}) }}
+		<small>Only characters are allowed</small>
+	</div>
+
+	<button type="submit" class="btn">{{ button_label|default('Save') }}</button>
+	{{ form_end(form) }}
+</form>
+
+<script>
+	// Add an event listener for form submission
+document.getElementById('newreservationForm').addEventListener('submit', function (event) { // Check form validity before submission
+if (!this.checkValidity()) {
+event.preventDefault(); // Prevent form submission if not valid
+alert('Please fill in all required fields with valid input.');
+}
+});
+</script>

@@ -1,0 +1,13 @@
+{% extends 'baseDou.html.twig' %}
+
+{% block title %}Edit Service{% endblock %}
+
+{% block mainnn %}
+    <h1>Edit Service</h1>
+
+    {{ include('service/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_service_indexback') }}">back to list</a>
+
+    {{ include('service/deleteBack.html.twig') }}
+{% endblock %}

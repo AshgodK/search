@@ -1,0 +1,75 @@
+{% extends 'baseF.html.twig' %}
+
+ {% block body %}
+<section>
+    <!-- Full Screen Search End -->
+<div class="container-fluid py-5" style="background-color: white;">
+    <div class="container py-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-7 text-center">
+                <h1 class="mb-4 text-green">Change your password please !</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="wow fadeIn" data-wow-delay="0.3s" style="background-color: #fff; border: 1px solid #28a745; border-radius: 5px;">
+                    <div class="card-body p-4">
+                          <form  method="POST" action="{{ path('edit_password_db_front', {'id': user.id}) }}" >
+                        
+                            <div class="mb-3">
+                                 
+              
+                             {% for flashMessage in app.flashes('error') %}
+    <div class="alert alert-danger">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+        <label for="old-password" class="form-label">Old Password</label>
+        <input type="password" id="old-password" name="old-password" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">New Password</label>
+        <input type="password" id="password" name="password" class="form-control" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" title="Password must contain at least one lowercase, one uppercase, one number, and be at least 8 characters long">
+    </div>
+    <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
+        <div id="passwordMatchError" class="text-danger" style="display: none;">Passwords do not match.</div>
+    </div>
+                             <div class="text-center mt-4">
+                        <div class="text-center mt-4">
+                      <button type="submit" class="btn btn-primary btn-lg">{{ button_label|default('Save') }}</button>
+<a href="{{ path('app_profile', {'id': app.user.id}) }}" class="btn btn-secondary btn-lg mx-2">Cancel</a>
+                    </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        // Function to validate if the two passwords match
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                document.getElementById("passwordMatchError").style.display = "block";
+                return false;
+            } else {
+                document.getElementById("passwordMatchError").style.display = "none";
+                return true;
+            }
+        }
+
+        // Attach the validation function to the form submission event
+        document.querySelector("form").addEventListener("submit", function(event) {
+            if (!validatePassword()) {
+                event.preventDefault(); // Prevent form submission if passwords don't match
+            }
+        });
+    </script>
+    </section>
+{% endblock %}

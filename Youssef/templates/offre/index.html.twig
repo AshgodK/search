@@ -1,0 +1,94 @@
+    {% extends 'basedem.html.twig' %}
+{% block body %}
+    <h1>Offre index</h1>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-hoS4eBvZsAJMMeVsYswFkoRFUJxpg3/q5qJXp6U4Y4LpPC5lQsBaZZFzZ02I5Ji3OrsdzP5EO8bcpBfVff2Ug==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <div class="slide-inner" style="background-image:url(../../front/images/slide-01.jpg)">
+    <div class="container">
+        <style>
+            body {
+                display: flex;
+                min-height: 100vh;
+                align-items: center;
+                justify-content: center;
+                margin: 0;
+            }
+
+            .table-container {
+                margin-top: 20px; /* Adjust the margin as needed */
+            }
+
+            .table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .table th,
+            .table td {
+                border: 1px solid #ccc;
+                padding: 8px;
+                text-align: left;
+            }
+
+            .table th {
+                background-color: #f2f2f2; /* Header background color */
+            }
+
+            .table tr:nth-child(even) {
+                background-color: #f2f2f2; /* Alternate row background color */
+            }
+
+            .table tr:hover {
+                background-color: #ddd; /* Hover row background color */
+            }
+            .table-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(255, 255, 255, 0.5); /* Adjust the background color and opacity as needed */
+                padding: 20px;
+                border-radius: 10px;
+                max-width: 80%; /* Adjust the maximum width as needed */
+}
+        </style>
+
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Echances</th>
+                        <th>Statut</th>
+                        <th>Prix</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for offre in offres %}
+                    <tr>
+                        <td>{{ offre.id }}</td>
+                        <td>{{ offre.nom }}</td>
+                        <td>{{ offre.description }}</td>
+                        <td>{{ offre.echances ? offre.echances|date('Y-m-d') : '' }}</td>
+                        <td>{{ offre.statut }}</td>
+                        <td>{{ offre.prix }}</td>
+                        <td>
+                            <a href="{{ path('app_offre_index', {'id': offre.id}) }}">Show</a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7">No records found</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+        
+        
+        </div>
+        </div>
+    </div>
+{% endblock %}

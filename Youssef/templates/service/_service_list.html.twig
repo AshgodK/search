@@ -1,0 +1,25 @@
+
+
+
+        {% for service in services %}
+            <div class="col-md-4 mb-4" id="qwe">
+                <div class="card">
+                    <img class="card-img-top" src="{{ asset('uploads/images/' ~ service.image) }}" alt="{{ service.nom }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ service.nom }}</h5>
+                        <p class="card-text">{{ service.description }}</p>
+                        <div class="btn-group" role="group" aria-label="Service Actions">
+                            <a href="{{ path('app_service_show', {'id': service.id}) }}" class="btn btn-primary">See Details</a>
+                            <a href="{{ path('app_commande_new') }}" class="btn btn-commander">Commander 🛒</a>
+                            <button class="btn like-btn" data-service-id="{{ service.id }}"><i class="fa fa-thumbs-up"></i> Like <span class="like-count">0</span></button>
+                            <button class="btn dislike-btn" data-service-id="{{ service.id }}"><i class="fa fa-thumbs-down"></i> Dislike <span class="dislike-count">0</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% else %}
+    <tr>
+        <td colspan="8">no services found</td>
+    </tr>
+{% endfor %}
+

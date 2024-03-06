@@ -1,0 +1,53 @@
+{# app/templates/service_form.html.twig #}
+
+{{ form_start(form, {'attr': {'class': 'row g-3 needs-validation', 'novalidate': 'novalidate'}}) }}
+    {{ form_errors(form) }}
+    <div class="col-md-6">
+        {{ form_label(form.nom, 'Service Name', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control' ~ (form_errors(form.nom)|length ? ' is-invalid' : form.nom.vars.valid ? ' is-valid' : ''), 'id': 'validationCustomServiceName'}}) }}
+        {% if form_errors(form.nom)|length %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.nom) }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control' ~ (form_errors(form.description)|length ? ' is-invalid' : form.description.vars.valid ? ' is-valid' : ''), 'id': 'validationCustomDescription'}}) }}
+        {% if form_errors(form.description)|length %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.description) }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        {{ form_label(form.disponibilite, 'Availability', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.disponibilite, {'attr': {'class': 'form-control' ~ (form_errors(form.disponibilite)|length ? ' is-invalid' : form.disponibilite.vars.valid ? ' is-valid' : ''), 'id': 'validationCustomAvailability'}}) }}
+        {% if form_errors(form.disponibilite)|length %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.disponibilite) }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        {{ form_label(form.categorie, 'Category', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.categorie, {'attr': {'class': 'form-control' ~ (form_errors(form.categorie)|length ? ' is-invalid' : form.categorie.vars.valid ? ' is-valid' : ''), 'id': 'validationCustomCategory'}}) }}
+        {% if form_errors(form.categorie)|length %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.categorie) }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-12">
+        {{ form_label(form.image, 'Service Image', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.image, {'attr': {'class': 'form-control' ~ (form_errors(form.image)|length ? ' is-invalid' : form.image.vars.valid ? ' is-valid' : ''), 'id': 'validationCustomServiceImage'}}) }}
+        {% if form_errors(form.image)|length %}
+            <div class="invalid-feedback">
+                {{ form_errors(form.image) }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit">{{ button_label|default('Save') }}</button>
+    </div>
+{{ form_end(form) }}

@@ -1,0 +1,58 @@
+{{ form_start(form, {'attr': {'class': 'row g-3 needs-validation', 'novalidate': 'novalidate'}}) }}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div style="margin-bottom: 10px;"> <!-- Adjust the margin-bottom value as needed -->
+                {{ form_label(form.description, 'Description :') }}
+            </div>
+            {{ form_widget(form.description, {'attr': {'class': 'form-control' ~ (form_errors(form.description)|length ? ' is-invalid' : ''), 'placeholder': 'DESCRIPTION DU PROJET'}}) }}
+            {% if form_errors(form.description)|length %}
+                <div class="invalid-feedback">
+                    {{ form_errors(form.description) }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+             <div style="margin-bottom: 10px;">
+                {{ form_label(form.offre, 'Offre :') }}
+            </div>        
+                {{ form_widget(form.offre, {'attr': {'class': 'form-control' ~ (form_errors(form.offre)|length ? ' is-invalid' : ''), 'placeholder': 'OFFRE'}}) }}
+                {% if form_errors(form.offre)|length %}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.offre) }}
+                    </div>
+                {% endif %}
+            
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div style="margin-bottom: 10px; margin-top: 10px">
+                {{ form_label(form.offre, 'Utilisateur :') }}
+            </div>
+            {{ form_widget(form.user, {'attr': {'class': 'form-control' ~ (form_errors(form.user)|length ? ' is-invalid' : ''), 'placeholder': 'UTILISATEUR'}}) }}
+            {% if form_errors(form.user)|length %}
+                <div class="invalid-feedback">
+                    {{ form_errors(form.user) }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit" style="margin-top: 10px">{{ button_label|default('Save') }}</button>
+    </div>
+    <div class="col-12 mt-3">
+        <a class="Btn" href="{{ path('app_offre_indexB') }}" >Back to list</a>
+    </div>
+</div>
+
+{{ form_end(form) }}

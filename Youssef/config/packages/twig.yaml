@@ -1,0 +1,7 @@
+twig:
+    paths:
+        '%kernel.project_dir%/templates/front': front
+        '%kernel.project_dir%/templates/back': back
+when@test:
+    twig:
+        strict_variables: true

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Daily UI 001 Sign Up Form</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+      <link rel="stylesheet" href="{{asset('register/css/style.css')}}">
+
+   <script src="https://hcaptcha.com/1/api.js" async defer></script>
+</head>
+
+<body>
+  <div class="signupSection">
+  <div class="info">
+    <h2>Freelancyy</h2>
+    <i class="icon ion-ios-ionic-outline" aria-hidden="true"></i>
+    <p>Join US</p>
+  </div>
+ 
+    
+          
+
+    {{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate','class':'signupForm','id':'registerform'}}) }}
+    
+    <ul class="noBullet">
+       <div class="error-message">
+                        {{ form_errors(registrationForm) }}
+                    </div>
+        <h2>Sign Up</h2>
+    <li>
+     {{ form_label(registrationForm.nom, 'Name')}}
+          {{ form_widget(registrationForm.nom, {'attr': { 'class': 'inputFields'}}) }}
+          {% if form_errors(registrationForm.nom) %}
+        <div class="error-message">
+            {{ form_errors(registrationForm.nom) }}
+        </div>
+    {% endif %}
+          
+        </li>
+       <li>
+        {{ form_label(registrationForm.prenom, 'LastName')}}
+          {{ form_widget(registrationForm.prenom, {'attr': { 'class': 'inputFields'}}) }}
+          {% if form_errors(registrationForm.prenom) %}
+        <div class="error-message">
+            {{ form_errors(registrationForm.prenom) }}
+        </div>
+    {% endif %}
+       </li>
+
+      <li>
+        {{ form_label(registrationForm.email, 'Email')}}
+          {{ form_widget(registrationForm.email, {'attr': { 'class': 'inputFields'}}) }}
+           {% if form_errors(registrationForm.email) %}
+        <div class="error-message">
+            {{ form_errors(registrationForm.email) }}
+        </div>
+    {% endif %}
+       </li>
+         <li>
+           {{ form_label(registrationForm.password, 'password')}}
+          {{ form_widget(registrationForm.password, {'attr': { 'class': 'inputFields'}}) }}
+            {% if form_errors(registrationForm.password) %}
+        <div class="error-message">
+            {{ form_errors(registrationForm.password) }}
+        </div>
+    {% endif %}
+        </li>
+            <li>
+              {{ form_label(registrationForm.confirm_password, 'Confirm Password')}}
+         {{ form_widget(registrationForm.confirm_password, {'attr': { 'class': 'inputFields'}}) }}
+           {% if form_errors(registrationForm.confirm_password) %}
+        <div class="error-message">
+            {{ form_errors(registrationForm.confirm_password) }}
+        </div>
+    {% endif %}
+         </li>
+          <li>
+              {{ form_label(registrationForm.ImagePath, 'Image')}}
+          {{ form_widget(registrationForm.ImagePath, {'class': 'inputFields'}) }}
+             {% if form_errors(registrationForm.ImagePath) %}
+        <div class="error-message">
+            {{ form_errors(registrationForm.ImagePath) }}
+        </div>
+    {% endif %}
+         </li>
+
+         <li>
+            {{ form_label(registrationForm.num_tel, 'Tel Number')}}
+             {{ form_widget(registrationForm.num_tel, {'attr': {'class': 'inputFields'}}) }}
+               {% if form_errors(registrationForm.num_tel) %}
+        <div class="error-message">
+            {{ form_errors(registrationForm.num_tel) }}
+        </div>
+    {% endif %}
+        </li>
+           <li>
+            {{ form_label(registrationForm.date_n, 'Birth Date')}}
+             {{ form_widget(registrationForm.date_n, {'attr': {'class': 'inputFields'}}) }}
+                {% if form_errors(registrationForm.date_n) %}
+        <div class="error-message">
+            {{ form_errors(registrationForm.date_n) }}
+        </div>
+    {% endif %}
+          </li>
+       
+      
+        <li>
+          {{ form_label(registrationForm.sexe, 'Gender')}}
+              {{ form_widget(registrationForm.sexe, {'attr': {'class': 'inputFields'}}) }}
+                 {% if form_errors(registrationForm.sexe) %}
+        <div class="error-message">
+            {{ form_errors(registrationForm.sexe) }}
+        </div>
+    {% endif %}
+         </li>
+       
+          <li>
+          {{ form_label(registrationForm.adresse, 'Adresse')}}
+             {{ form_widget(registrationForm.adresse, {'attr': {'class': 'inputFields'}}) }}
+               {% if form_errors(registrationForm.adresse) %}
+        <div class="error-message">
+            {{ form_errors(registrationForm.adresse) }}
+        </div>
+    {% endif %}
+           </li>
+           <li>
+    {{ form_label(registrationForm.role, 'Type of Account')}}
+            {{ form_widget(registrationForm.role, {'attr': {'class': 'inputFields'}}) }}
+                {% if form_errors(registrationForm.role) %}
+        <div class="error-message">
+            {{ form_errors(registrationForm.role) }}
+        </div>
+    {% endif %}
+              </li>
+          
+         <br>
+         <li>
+         <div
+  class="h-captcha"
+ data-sitekey="d1fec662-637c-4c4e-842f-649fdcea9415"
+ 
+  data-error-callback="onError"
+></div>
+         </li>
+          <li>
+          {{ form_label(registrationForm.agreeTerms, 'Terms and conditions')}}
+              {{ form_widget(registrationForm.agreeTerms) }}
+                 {% if form_errors(registrationForm.agreeTerms) %}
+        <div class="error-message">
+            {{ form_errors(registrationForm.agreeTerms) }}
+        </div>
+    {% endif %}
+               </li>
+        
+    
+        <li id="center-btn">
+       <input id="join-btn" type="submit"  value="Join">
+        </li>
+        <li id="center-btn">
+
+    Already have an account? <a class="text-link" href="{{ path('app_login') }}">Log in</a></div>
+     </li>
+            </ul>
+     {{ form_end(registrationForm) }}
+     
+    
+     
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('registerform').addEventListener('submit', function(event) {
+            var date = document.getElementById('registration_form_date_n').value.trim();
+           
+
+            if (date === '' ) {
+                event.preventDefault(); // Prevent form submission
+
+                // Remove existing error messages
+                var existingErrors = document.querySelectorAll('.input-error');
+                existingErrors.forEach(function(error) {
+                    error.remove();
+                });
+
+                // Create new error elements
+                if (date === '') {
+                    var titreInput = document.getElementById('registration_form_date_n');
+                    var titreError = document.createElement('div');
+                    titreError.className = 'input-error';
+                    titreError.textContent = 'Date cannot be blank.';
+                    titreError.style.color = 'red';
+                    titreInput.parentNode.insertBefore(titreError, titreInput.nextSibling);
+                }
+
+                
+            }
+        });
+    });
+</script>
+
+
+  </div>
+  
+    <script src="{{asset('register/js/index.js')}}"></script>
+
+</body>
+</html>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                               
+                                
+                          
+                                
+                               
+                            
+                               
+                               
+                          
+                               
+                               
+                          
+                            
+                           
+                          
+                               
+                                
+                       
+                           
+                               
+                      
+                           
+                                
+                         
+                           
+                                
+                            
+                              
+                              
+                            
+                            
+                               
+            
+                           
+                            
